@@ -14,9 +14,7 @@
 //首页
 Route::get('/','PagesController@root')->name('root');
 
-//Auth::routes();
-
-
+//Auth::routes()
 Route::namespace('Auth')->group(function(){
   //登录路由
   Route::get('login','LoginController@showLoginForm')->name('login');
