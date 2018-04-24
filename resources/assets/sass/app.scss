@@ -62,3 +62,12 @@ body {
         cursor: pointer;
     }
 }
+
+.shared-msg {
+  animation: shared-msg 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes shared-msg{
+  form{opacity:1;}
+  to{opacity: 0;}
+}

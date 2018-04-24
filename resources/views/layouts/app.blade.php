@@ -19,6 +19,7 @@
           @include('layouts.header')
           <div class="container">
 
+             @include('layouts.message')
              @yield('content')
 
           </div>
@@ -26,6 +27,6 @@
       </div>
 
       <!-- Script -->
-      <script src="{{ asset('js/app.js') }}"></script>  
+      <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
