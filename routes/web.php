@@ -34,6 +34,6 @@ Route::namespace('Auth')->group(function(){
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
-Route::get('phpinfo','TestController@index');
-
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories','CategoriesController',['only'=>['show']]);
