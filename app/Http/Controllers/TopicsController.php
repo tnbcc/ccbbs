@@ -14,9 +14,11 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+
+ //防止N+1的问题 使用with做了预加载 做了缓存
+  public function index()
 	{
-		$topics = Topic::paginate();
+		$topics = Topic::with('user','category')->paginate(30);
 		return view('topics.index', compact('topics'));
 	}
 
