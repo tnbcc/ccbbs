@@ -16,9 +16,9 @@ class TopicsController extends Controller
 
 
  //防止N+1的问题 使用with做了预加载 做了缓存
-  public function index()
+  public function index(Request $request,Topic $topic)
 	{
-		$topics = Topic::with('user','category')->paginate(30);
+		$topics = $topic->withOrder($request->order)->paginate(15);
 		return view('topics.index', compact('topics'));
 	}
 
