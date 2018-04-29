@@ -39,3 +39,7 @@ Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'crea
 Route::resource('categories','CategoriesController',['only'=>['show']]);
 
 Route::get('getdata','OrderController@getData');
+
+//图片上传
+
+Route::post('upload_image','TopicsController@uploadImage')->name('topics.upload_image');
