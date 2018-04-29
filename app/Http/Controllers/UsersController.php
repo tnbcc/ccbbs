@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Handlers\ImageUploadHandler;
 use Auth;
-
 class UsersController extends Controller
 {
 
@@ -33,6 +32,21 @@ class UsersController extends Controller
 
     }
 
+    /**
+      * @api {post} uploadImage 话题图片上传至阿里云OSS[uploadImage]
+      * @apiVersion 2.0.0
+      * @apiName uploadImage
+      * @apiGroup upload
+      * @apiSampleRequest upload_image
+      *
+      * @apiParam {date} Request 图片上传file信息
+      *
+      *
+      *
+      * @apiSuccess {Array} data  返回数据内容.
+ 	    * 
+      *
+      */
     //用户编辑提交页
     public function update(UserRequest $request,User $user,ImageUploadHandler $uploader)
     {
