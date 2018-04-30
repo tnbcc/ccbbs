@@ -47,16 +47,25 @@ class TopicsController extends Controller
 
 	public function edit(Topic $topic)
 	{
-        $this->authorize('update', $topic);
-		return view('topics.create_and_edit', compact('topic'));
+        $categories = Category::select('id','name')->get();
+        if(Auth::user()->can('update',$topic)){
+		return view('topics.create_and_edit', compact('topic','categories'));
+  }else{
+       return redirect()->back()->with('danger','您无权编辑别人的话题~');
+  }
 	}
 
 	public function update(TopicRequest $request, Topic $topic)
 	{
-		$this->authorize('update', $topic);
-		$topic->update($request->all());
+		 if(Auth::user()->can('update',$topic))
+     {
+       $topic->update($request->all());
 
-		return redirect()->route('topics.show', $topic->id)->with('success', '更新话题成功~');
+       return redirect()->route('topics.show', $topic->id)->with('success', '更新话题成功~');
+     }else{
+        return redirect()->back()->with('danger','您无法更新别人的话题~');
+     }
+
 	}
 
 	public function destroy(Topic $topic)
