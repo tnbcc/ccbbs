@@ -70,10 +70,15 @@ class TopicsController extends Controller
 
 	public function destroy(Topic $topic)
 	{
-		$this->authorize('destroy', $topic);
-		$topic->delete();
 
-		return redirect()->route('topics.index')->with('success', '删除话题成功~');
+		if(Auth::user()->can('destroy',$topic))
+    {
+      $topic->delete();
+
+  		return redirect()->route('topics.index')->with('success', '删除话题成功~');
+    }else{
+       return redirect()->back()->with('danger','您无法删除别人的话题');
+    }
 	}
 
   //阿里云oss图片上传
